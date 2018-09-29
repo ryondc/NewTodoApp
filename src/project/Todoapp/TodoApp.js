@@ -107,7 +107,6 @@ componentWillUnmount() {//???
 
 
     edit(event){
-        var editStyle={};
        event.preventDefault();     
         this.setState({ 
           editmode:!this.state.editmode

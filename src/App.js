@@ -1,11 +1,9 @@
 import React, { Component } from 'react'; 
 import './App.css';
 import { TodoApp } from './project/Todoapp/TodoApp';
-import { Header } from './Nav/header/Header';
 import {Root} from './Nav/root/Root';
-import {IndexRoute} from 'react-router';
-import { BrowserRouter, Link, Route } from 'react-router-dom';
-import { Page } from './Nav/page/Page';
+import { BrowserRouter  , Route } from 'react-router-dom';
+import { Progress } from './project/Progressapp/ProgressApp';
 
 
 
@@ -22,7 +20,7 @@ class App extends Component {
         <Route path={"/"} component={Root}/>
         <Route exact path={"/"} component={TodoApp}/>
         <Route path={"/home"} component={TodoApp}/>
-        <Route path={"/page"} component={Page}/>    
+        <Route path={"/page"} component={Progress}/>    
         </div>
       </BrowserRouter>  
       </div>
