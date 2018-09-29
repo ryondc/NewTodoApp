@@ -1,0 +1,9 @@
+ol {
+    background: #3399ff;
+    padding: 20px;
+    position: relative;
+}
+
+ol li {
+    background-color: chartreuse;
+}

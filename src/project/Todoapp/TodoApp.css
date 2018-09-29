@@ -1,0 +1,11 @@
+div input {
+    position: relative;
+    left:26%;
+    border: 2px solid  peru;
+}
+
+a{
+    
+    border: 2px solid salmon;
+    color: rgb(23, 20, 220);
+}
