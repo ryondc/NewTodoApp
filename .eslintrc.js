@@ -1,26 +1,27 @@
 module.exports = {
-  parser: 'babel-eslint',
+  parser: "babel-eslint",
   parserOptions: {
     ecmaVersion: 6,
-    sourceType: 'module',
+    sourceType: "module",
     ecmaFeatures: {
       jsx: true,
       modules: true,
-      experimentalObjectRestSpread: true,
-    },
+      experimentalObjectRestSpread: true
+    }
   },
   env: {
     browser: true,
     node: true,
-    es6: true,
+    es6: true
   },
-  extends: ['eslint:recommended'],
+  extends: ["plugin:react/recommended"],
   rules: {
-    'comma-dangle': 0,
-    'no-unused-vars': 'warn',
-    'no-console': 1,
-    'no-unexpected-multiline': 'warn',
-    'arrow-body-style': ['error', 'as-needed'],
-    'no-console': ['error', { allow: ['log'] }],
-  },
+    "react/prop-types": 0,
+    "comma-dangle": 0,
+    "no-unused-vars": "warn",
+    "no-console": 1,
+    "no-unexpected-multiline": "warn",
+    "arrow-body-style": ["error", "as-needed"],
+    "no-console": ["error", { allow: ["log"] }]
+  }
 };

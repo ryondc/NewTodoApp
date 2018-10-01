@@ -1,33 +1,33 @@
-import React from 'react';
-import './TodoApp.css';
-import { Button } from '../../button/button';
-import { List } from '../../list/list';
+import React from "react";
+import "./TodoApp.css";
+import { Button } from "../../button/button";
+import { List } from "../../list/list";
 
 export class TodoApp extends React.Component {
   constructor() {
     super();
     this.state = {
-      textInput: '',
+      textInput: "",
       list: [],
-      editmode: false,
+      editmode: false
     };
   }
 
   changUserInput(input) {
     this.setState({
-      textInput: input,
+      textInput: input
     });
   }
 
   addToList(input, event) {
     event.preventDefault();
-    var listArray = this.state.list;
-    listArray.push(input);
-
-    this.setState({
-      list: listArray,
-      textInput: ' ',
-    });
+    if(input !== ""){
+      var listArray = this.state.list;
+      listArray.push(input);
+      this.setState({
+        list: listArray
+      })
+    }
     // localStorage.setItem(this.statelist,JSON.stringify(listArray));
   }
 
@@ -66,12 +66,18 @@ export class TodoApp extends React.Component {
 
     // add event listener to save state to localStorage
     // when user leaves/refreshes the page
-    window.addEventListener('beforeunload', this.saveStateToLocalStorage.bind(this));
+    window.addEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
   }
 
   componentWillUnmount() {
     //???
-    window.removeEventListener('beforeunload', this.saveStateToLocalStorage.bind(this));
+    window.removeEventListener(
+      "beforeunload",
+      this.saveStateToLocalStorage.bind(this)
+    );
 
     // saves if component has a chance to unmount
     this.saveStateToLocalStorage();
@@ -80,44 +86,53 @@ export class TodoApp extends React.Component {
   handleRemove(item, event) {
     event.preventDefault();
     this.setState({
-      list: this.state.list.filter(loopitem => loopitem !== item),
+      list: this.state.list.filter(loopitem => loopitem !== item)
     });
   }
 
-  edit(event) {
+  edit(i, event) {
     event.preventDefault();
-    this.setState({
-      editmode: !this.state.editmode,
-    });
+    this.setState(
+      {
+        //  editmode: !this.state.editmode,state chung
+        [`input-${i}`]: !this.state[`input-${i}`]//check if else
+      },
+      () => {
+        console.log(this.state[`input-${i}`]);//bat dong bo
+      }
+    );
   }
 
   handleEdit(inputUpdate, event) {
-    //??????????????????????????????????????
     event.preventDefault();
     this.setState({
-      textInput: inputUpdate,
+      textInput: inputUpdate
     });
   }
 
-  update(i, value, UpdateButton, event) {
+  update(i,value,UpdateButton,event){
     event.preventDefault();
-    var listUpdate = this.state.list;
-    value = UpdateButton;
-    listUpdate[i] = value;
-    this.setState({
-      list: listUpdate,
-    });
-    console.log(value);
-  }
+     var listUpdate = this.state.list;
+        value=UpdateButton;
+        listUpdate[i]=value;
+     this.setState({
+         list:listUpdate
+     })
+ console.log(value);
+}
+
+  _renderStyle = index => {
+    if (this.state[`input-${index}`]) {
+      return {
+        display: "block"
+      };
+    }
+    return {
+      display: "none"
+    };
+  };
 
   render() {
-    var editStyle = [];
-    if (!this.state.editmode) {
-      editStyle.display = 'none';
-    } else {
-      editStyle.display = 'block';
-    }
-
     return (
       <div>
         <p>TO DO APP REACT-JS</p>
@@ -128,7 +143,9 @@ export class TodoApp extends React.Component {
           onChange={e => this.changUserInput(e.target.value)}
         />
 
-        <Button onClick={event => this.addToList(this.state.textInput, event)}>Add</Button>
+        <Button onClick={event => this.addToList(this.state.textInput, event)}>
+          Add
+        </Button>
 
         <List>
           {this.state.list.map((value, i) => (
@@ -138,17 +155,22 @@ export class TodoApp extends React.Component {
                 <a href="" onClick={event => this.handleRemove(value, event)}>
                   ---Delete---
                 </a>
-                <a href="" onClick={event => this.edit(event)}>
+                <a href="" onClick={event => this.edit(i, event)}>
                   ---Edit---
                 </a>
-                <a href="" onClick={event => this.update(i, value, this.state.textInput, event)}>
+                <a
+                  href=""
+                  onClick={event =>
+                    this.update(i, value, this.state.textInput, event)
+                  }
+                >
                   ---Update---
                 </a>
               </div>
 
               <input
                 type="text"
-                style={editStyle}
+                style={this._renderStyle(i)}
                 value={this.props.changeText}
                 onChange={event => this.handleEdit(event.target.value, event)}
               />
