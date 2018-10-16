@@ -21,12 +21,12 @@ export class TodoApp extends React.Component {
 
   addToList(input, event) {
     event.preventDefault();
-    if(input !== ""){
+    if (input !== "") {
       var listArray = this.state.list;
       listArray.push(input);
       this.setState({
         list: listArray
-      })
+      });
     }
     // localStorage.setItem(this.statelist,JSON.stringify(listArray));
   }
@@ -51,10 +51,14 @@ export class TodoApp extends React.Component {
         // parse the localStorage string and setState
         try {
           value = JSON.parse(value);
-          this.setState({ [key]: value });
+          this.setState({
+            [key]: value
+          });
         } catch (e) {
           // handle empty string
-          this.setState({ [key]: value });
+          this.setState({
+            [key]: value
+          });
         }
       }
     }
@@ -95,10 +99,10 @@ export class TodoApp extends React.Component {
     this.setState(
       {
         //  editmode: !this.state.editmode,state chung
-        [`input-${i}`]: !this.state[`input-${i}`]//check if else
+        [`input-${i}`]: !this.state[`input-${i}`] //check if else
       },
       () => {
-        console.log(this.state[`input-${i}`]);//bat dong bo
+        console.log(this.state[`input-${i}`]); //bat dong bo
       }
     );
   }
@@ -110,16 +114,16 @@ export class TodoApp extends React.Component {
     });
   }
 
-  update(i,value,UpdateButton,event){
+  update(i, value, UpdateButton, event) {
     event.preventDefault();
-     var listUpdate = this.state.list;
-        value=UpdateButton;
-        listUpdate[i]=value;
-     this.setState({
-         list:listUpdate
-     })
- console.log(value);
-}
+    var listUpdate = this.state.list;
+    value = UpdateButton;
+    listUpdate[i] = value;
+    this.setState({
+      list: listUpdate
+    });
+    console.log(value);
+  }
 
   _renderStyle = index => {
     if (this.state[`input-${index}`]) {

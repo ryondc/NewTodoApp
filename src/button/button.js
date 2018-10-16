@@ -9,7 +9,7 @@ export class Button extends React.Component{
             <button onClick={this.props.onClick}>
                 {this.props.children}
             </button>
-            </form>   
+            </form>
         )
     }
 }

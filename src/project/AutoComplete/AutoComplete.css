@@ -1,0 +1,45 @@
+.autocomplete {
+  position: relative;
+  margin: 4% 14%;
+  border: 1px solid green;
+  height: 21px;
+  width: 300px;
+  left: 20%;
+  top: 20%;
+}
+
+.autocomplete .search_button {
+  position: absolute;
+  left: calc(100% - 59px);
+  z-index: 1;
+}
+
+.none-border {
+  border: none;
+  outline: none;
+  z-index: 1;
+}
+
+.dialog {
+  position: absolute;
+  width: 100%;
+  display: none;
+  overflow: scroll;
+  height: 350px;
+  background-color: yellow;
+  cursor: pointer;
+}
+
+.dialog div {
+  height: 50px;
+  padding: 20px 10px;
+}
+
+form input {
+  position: relative;
+  left: 0%;
+}
+
+.dialog div:hover {
+  background-color: cadetblue;
+}

@@ -79,9 +79,9 @@ export class Progress extends React.Component {
     this.saveStateToLocalStorage();
   }
 
-  componentDidUpdate() {
-    console.log("updated");
-  }
+  // componentDidUpdate() {
+  //   console.log("updated");
+  // }
 
   render() {
     return (

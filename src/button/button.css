@@ -1,5 +1,5 @@
 button {
-    background-color: rgb(255, 0, 128); 
+    background-color: rgb(255, 0, 128);
     border: none;
     color: white;
     padding: 15px 32px;
@@ -10,5 +10,5 @@ button {
     margin: 4px 2px;
     cursor: pointer;
     position: relative;
-    left: 37%;
+    left: 46%;
 }
